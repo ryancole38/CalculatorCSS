@@ -1,0 +1,277 @@
+@font-face{
+    font-family: computer;
+    src: url(regular.otf);
+}
+
+@font-face{
+    font-family: led;
+    src: url(open-24-display-edited.otf); /*Edited so that Err displays correctly on the 7 segment*/
+}
+
+.calculator{
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 755px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 100px;
+    background: #F0DEC6;
+    border-radius: 20px;
+    box-shadow: -0.25px -3px 0 1px #D7C097, -0.5px -8px 0 2px #CDAC7F, 10px 10px 30px 0 #978E89; 
+}
+.calculator .face{
+    display: block;
+    position: absolute;
+    height: 720px;
+    width: 370px;
+    border-radius: 20px;
+    top: 20px;
+    left: 15px;
+    background-color: #281710;
+    background-image: linear-gradient(#392117, #806d64 20%, #492C26 33%, #2A110C, #1E0906);
+    background-size: 355px 32px;
+    background-position: 7px 230px;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 1px 2px #411D0D, -0.5px 0.5px 0.25px 1px #361607,
+    0.25px 59.5px #472B20 inset,
+    0.25px 60px 0 1px #73554A inset;
+    
+}
+
+.calculator .face .solarpanel{
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 355px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 70px;
+    border-radius: 20px 20px 2px 2px;
+    background-image: linear-gradient(90deg, #2D241D, #251D1A, #191410 60%, #0E0D09 85%, #1F1812 );
+    background-size: 100% 100%;
+    box-shadow: -1.5px -0.25px 0.25px 1px #24130C;
+}
+
+.calculator .face .screen{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100px;
+    width: 355px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 130px;
+    background-image: radial-gradient(#040402, #100F0B 50%);
+    background-size: 100% 100%;
+    box-shadow: -0.25px -0.125px 1px 0.25px #695C54;
+}
+
+.calculator .face .screen .display{
+    height: 60px;
+    width: 30px;
+    margin-left: 3px;
+    background-image: linear-gradient(70deg, #0B0F12,  #181715);
+    transform: skew(3deg);
+    font-family: led;
+    font-size: 45px;    
+}
+
+.calculator .face .screen .display .background{
+    position: absolute;
+    width: 25px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 10px;
+    background-color: #07080A;
+}
+
+.calculator .face .screen .display .background-number{
+    position: absolute;
+    top: -10px;
+    left: 4px;
+    transform: skew(-13deg);
+    color: #161719;
+}
+
+.calculator .face .screen .display .number{
+    position: absolute;
+    margin-left: 6px;
+    top: 0px;
+    color: rgba(237, 252, 248, 0.808);
+    text-shadow: 0 0 40px #15b1d4;
+    transform: skew(-10deg);
+    background-image: radial-gradient(rgba(21, 216, 234, 0.4), rgba(7, 41, 68, 0.02) 70%, rgba(0,0,0, 0) 90%);
+    background-size: 28px 45px;
+    background-repeat: no-repeat;
+    background-position: -5px 8px;
+}
+
+.one{
+    width: 20px;
+    text-indent: 15px;
+}
+
+.calculator .face .screen .display .decimal{
+    position: absolute;    
+    color: rgba(237, 252, 248, 0.808);
+    text-shadow: 0 0 30px #139FC0;
+    margin-left: 22px;
+}
+
+.calculator .face .screen .display .sign{
+    position: absolute;    
+    color: rgba(237, 252, 248, 0.808);
+    text-shadow: 0 0 60px #139FC0;
+    margin-left: 7.5px;
+    top: 2.5px;
+}
+
+.calculator .face .keyboard{
+    display: block;
+    position: absolute;
+    height: 450px;
+    width: 355px;
+    bottom: 7.5px;
+    border-radius: 3px 3px 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    left: 0;
+    /* background-color: #E8D9C4; */
+    background-image: linear-gradient( #E3D1BB,
+        #E7D5C1,
+        #ECDAC6,
+        #E8D9C4,
+        #E1D1C1,
+        #DBCBBB,
+        #ECDAC6,
+        #EDDAC9,
+        #E3D2BE
+        );
+    background-size: 100% 3px;
+
+    box-shadow: 0 0 0 2px #1E110B;
+}
+
+.calculator .face .keyboard .grid-container{
+    display: grid;
+    position: absolute;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    width: 355px;
+    height: 450px;
+    overflow: hidden;
+}
+
+.calculator .face .keyboard .grid-container t{
+    display: block;
+    position: relative;
+    color: white;
+    font-family: computer;
+    margin-top: 9px;
+}
+
+.key{
+    place-self: center;     
+    text-align: center;
+    font-size: 30px;
+    user-select: none;
+}
+.key:hover{
+    cursor: pointer;
+}
+
+.key:hover:active{
+    font-size: 28px;
+}
+
+
+
+.calculator .face .keyboard .grid-container .number{
+    width: 60px;
+    height: 45px;
+    border-radius: 13px;
+    background-image: linear-gradient(90deg, #12100B, #27231A);
+    box-shadow: 0.25px 0.5px 0.5px 0 #B7A69E inset,
+        0 0 0 1px #150601,
+        2px 2px 4px #0E0F07,
+        0 0 0 4px #442B24,
+        0 0 0 4.5px #31190D;
+    
+}
+
+.calculator .face .keyboard .grid-container .number:hover:active{
+    background-image: linear-gradient(90deg, #0f0e0a, #25221b);
+    box-shadow: 0.115px 0.25px 0.25px 0 #B7A69E inset,
+        0 0 0 1px #150601,
+        2px 2px 4px #0E0F07,
+        0 0 0 4px #442B24,
+        0 0 0 4.5px #31190D;
+}
+
+.calculator .face .keyboard .grid-container .symbol{
+    width: 60px;
+    height: 45px;
+    background-image: linear-gradient(90deg, #59493A, #55473C);
+    border-radius: 13px;
+    box-shadow: 0.25px 0.5px 0.5px 0 #B7A69E inset,
+        0 0 0 1px #150601,
+        2px 2px 4px #0E0F07,
+        0 0 0 4px #442B24,
+        0 0 0 4.5px #31190D;
+}
+
+.calculator .face .keyboard .grid-container .symbol:hover:active{
+    width: 60px;
+    height: 45px;
+    background-image: linear-gradient(90deg, #554637, #55473C);
+    border-radius: 13px;
+    box-shadow:  0.115px 0.25px 0.25px 0 #B7A69E inset,
+        0 0 0 1px #150601,
+        2px 2px 4px #0E0F07,
+        0 0 0 4px #442B24,
+        0 0 0 4.5px #31190D;
+
+}
+
+.calculator .face .keyboard .grid-container .function{
+    width: 60px;
+    height: 37px;
+    background-image: linear-gradient(90deg, #351210, #481B1E);
+    border-radius: 2px;
+    place-self: center;     
+    text-align: center;
+    font-size: 26px;
+    user-select: none;
+
+    box-shadow: 0.25px 0.5px 0.5px 0 #7A5B58 inset,
+        1px 1px 0.75px 0 #130100,
+        0 0 0 2px #4E322E,
+        0 0 0 1px #50332D,
+        0 0 0.5px 4.5px #230801;
+}
+.calculator .face .keyboard .grid-container .function:hover{
+    cursor: pointer;
+}
+
+.calculator .face .keyboard .grid-container .function:hover:active{
+    font-size: 24px;
+    background-image: linear-gradient(90deg, #300f0d, #481B1E);
+    box-shadow: 0.115px 0.25px 0.25px 0 #7A5B58 inset,
+        1px 1px 0.75px 0 #130100,
+        0 0 0 2px #4E322E,
+        0 0 0 1px #50332D,
+        0 0 0.5px 4.5px #230801;
+}
