@@ -14,7 +14,14 @@ class Display{
             character = "I";
             this.numberClasses.add('one');
         }
-        this.displayNumber.innerHTML = character;
+        if(character === '-'){
+            this.setSign(true);
+            console.log("here : )");
+        } else{
+            this.displayNumber.innerHTML = character;
+            this.setSign(false);
+        }
+        
     }
 
     setDecimal(bool){
@@ -30,9 +37,7 @@ class Display{
     clear(){
         this.displayNumber.innerHTML = "";
         this.setDecimal(false);
-        if(this.sign !== null){
-            this.sign.innerHTML = "";
-        }
+        this.setSign(false);
     }
 
 }
@@ -47,13 +52,21 @@ class Screen{
     display(number){
         this.clearDisplay();
         let numberString = number.toString();
+        numberString = (numberString.toString().length > this.displayCount)? numberString.substring(0, this.displayCount + 1) : numberString;
         let lengthWithDecimal = numberString.length;
         let decimalPlace = lengthWithDecimal - numberString.indexOf('.'); //get display that should show decimal
+        
+        if(decimalPlace - 1 === 0 && numberString.length === this.displayCount + 1){
+            numberString = 'Err';
+        }
+
         numberString = numberString.replace('.', '');
+
         if(numberString.length > this.displayCount){
             numberString = "Err";
         }
-        if(decimalPlace >= 0 && decimalPlace < lengthWithDecimal){
+        if(decimalPlace >= 0 && decimalPlace < lengthWithDecimal && numberString !== 'Err'){
+            console.log(decimalPlace);
             this.displays[decimalPlace - 1].setDecimal(true); //set decimal at place if string contains decimal
         } else {
             this.displays[0].setDecimal(true) //otherwise rightmost display should have decimal
@@ -92,10 +105,11 @@ class Calculator{
 
     pushDigit(digit){
         if(digit.length > 1) throw new Error('Cannot push more than one digit at a time');
-        //Check if inputRegister is empty, and remove leading zero if it is
+        
         if(this.inputEmpty()  && this.operationsRegistersFull()){
             this.clearOperationsRegisters();
         }
+        //Check if inputRegister is empty, and remove leading zero if it is
         if(this.inputEmpty() && digit !== "."){
             this.inputRegister = "";
         }
@@ -236,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let screen = new Screen(10);
     let calculator = new Calculator(screen);
 
+    //screen.display('123.45678910');
     registerNumberEvents(calculator);
     registerMemoryEvents(calculator);
     registerOperatorEvents(calculator);
