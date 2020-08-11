@@ -125,17 +125,29 @@
 
 .calculator .face .screen .display .decimal{
     position: absolute;    
+    width: 10px;
     color: rgba(237, 252, 248, 0.808);
     text-shadow: 0 0 30px #139FC0;
-    margin-left: 22px;
+    text-indent: 5px;
+    margin-left: 17px;
+    background-image: radial-gradient(rgba(21, 216, 234, 0.4), rgba(7, 41, 68, 0.02) 70%, rgba(0,0,0, 0) 90%);
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: 2px 39px;
 }
 
 .calculator .face .screen .display .sign{
-    position: absolute;    
+    position: absolute;   
+    width: 25px;
+    text-indent: 5px; 
     color: rgba(237, 252, 248, 0.808);
     text-shadow: 0 0 60px #139FC0;
-    margin-left: 7.5px;
+    margin-left: 2.5px;
     top: 2.5px;
+    background-image: radial-gradient(rgba(21, 216, 234, 0.4), rgba(7, 41, 68, 0.02) 70%, rgba(0,0,0, 0) 90%);
+    background-size: 30px 15px;
+    background-repeat: no-repeat;
+    background-position: -3px 20px;
 }
 
 .calculator .face .keyboard{
