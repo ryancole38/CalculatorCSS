@@ -16,7 +16,6 @@ class Display{
         }
         if(character === '-'){
             this.setSign(true);
-            console.log("here : )");
         } else{
             this.displayNumber.innerHTML = character;
             this.setSign(false);
@@ -66,7 +65,6 @@ class Screen{
             numberString = "Err";
         }
         if(decimalPlace >= 0 && decimalPlace < lengthWithDecimal && numberString !== 'Err'){
-            console.log(decimalPlace);
             this.displays[decimalPlace - 1].setDecimal(true); //set decimal at place if string contains decimal
         } else {
             this.displays[0].setDecimal(true) //otherwise rightmost display should have decimal
@@ -128,26 +126,23 @@ class Calculator{
     }
 
     operationsRegistersFull(){
-        return (this.registerA !== '0' && this.registerA !== '') && (this.registerB !== '0' && this.registerB !== '');
+        return this.registerA !== '' && this.registerB !== '';
     }
 
     clearOperationsRegisters(){
         this.registerA = '0';
         this.registerB = '0';
-        console.log('registers cleared');
     }
 
     setOperator(operator){
-        if(this.registerA === '0' || this.registerA === ''){
+        if(this.registerA === ''){
             this.registerA = this.inputRegister;
             this.inputRegister = '0';
-        } else if(this.registerB === '0' || this.registerB === ''){
+        } else if(this.registerB === ''){
             this.registerB = this.inputRegister;
             this.inputRegister = '0';
-            console.log('to register b');
         } else{
-            this.registerB = '0';
-            console.log('emptied register B');
+            this.registerB = '';
         }
         if(this.operator !== ''){
             this.calculateResult();
@@ -163,10 +158,10 @@ class Calculator{
             this.operator = this.lastOperator;
         }
 
-        if(this.registerA === '0' || this.registerA === ''){
+        if(this.registerA === ''){
             this.registerA = this.inputRegister;
             this.inputRegister = '0';
-        } else if(this.registerB === '0' || this.registerB === ''){
+        } else if(this.registerB === ''){
             this.registerB = this.inputRegister;
             this.inputRegister = '0';
         }
@@ -181,7 +176,7 @@ class Calculator{
         let A = Number(this.registerA);
         let B = Number(this.registerB);
         let result = 'Err'
-        switch(this.operator){
+        switch (this.operator) {
             case '+':
                 result = A + B;
                 break;
@@ -192,7 +187,7 @@ class Calculator{
                 result = A * B;
                 break;
             case '/':
-                if(B !== 0)
+                if (B !== 0)
                     result = A / B;
                 break;
             case '':
@@ -202,7 +197,6 @@ class Calculator{
                 result = 'Err';
                 break;
         }
-        console.log(result);
         this.registerA = result.toString();
         this.screen.display(this.registerA);
     }
@@ -235,9 +229,9 @@ class Calculator{
 
     clearAll(){
         this.inputRegister = "0";
-        this.registerA = "0";
-        this.registerB = "0"
-        this.memoryRegister = "0";
+        this.registerA = "";
+        this.registerB = ""
+        this.memoryRegister = "";
         this.operator = "";
         this.lastOperator = "";
         this.screen.display(this.inputRegister);
@@ -250,7 +244,6 @@ document.addEventListener("DOMContentLoaded", function(){
     let screen = new Screen(10);
     let calculator = new Calculator(screen);
 
-    //screen.display('123.45678910');
     registerNumberEvents(calculator);
     registerMemoryEvents(calculator);
     registerOperatorEvents(calculator);
