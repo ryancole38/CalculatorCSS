@@ -220,8 +220,7 @@
         0 0 0 1px #150601,
         2px 2px 4px #0E0F07,
         0 0 0 4px #442B24,
-        0 0 0 4.5px #31190D;
-    
+        0 0 0 4.5px #31190D;   
 }
 
 .calculator .face .keyboard .grid-container .number:hover:active{
@@ -231,6 +230,38 @@
         2px 2px 4px #0E0F07,
         0 0 0 4px #442B24,
         0 0 0 4.5px #31190D;
+}
+
+/*Zero button*/
+.calculator .face .keyboard .grid-container .number#\30 {
+    background-image: radial-gradient(#0f0e0a 30%, #25221b 60%, #947968 85%);
+    background-size: 80px 80px;
+    background-position: -20px -20px;
+    background-repeat: no-repeat;
+}
+
+/*Zero button active*/
+.calculator .face .keyboard .grid-container .number#\30 :hover:active{
+    background-image: radial-gradient(#0f0e0a 30%, #25221b 60%, #947968 85%);
+    background-size: 80px 80px;
+    background-position: -18px -18px;
+    background-repeat: no-repeat;
+}
+
+/*One button*/
+.calculator .face .keyboard .grid-container .number#\31 {
+    background-image: radial-gradient(#0f0e0a 30%, #25221b 60%, #c2b2a7 85%);
+    background-size: 80px 80px;
+    background-position: -20px -20px;
+    background-repeat: no-repeat;
+}
+
+/*One button active*/
+.calculator .face .keyboard .grid-container .number#\31 :hover:active{
+    background-image: radial-gradient(#0f0e0a 30%, #25221b 60%, #ac9587 85%);
+    background-size: 80px 80px;
+    background-position: -18px -18px;
+    background-repeat: no-repeat;
 }
 
 .calculator .face .keyboard .grid-container .symbol{
@@ -323,5 +354,19 @@
 
 .calculator .face .keyboard .grid-container .function#C:hover:active{
     background-image: linear-gradient(90deg, #2F0D0B 20%, #3D1A16 45% 83%, #532C27 90%, #7c5c52 99%);
+    background-repeat: no-repeat; 
+}
+
+.calculator .face .keyboard .grid-container .function#M-{
+    background-image: linear-gradient(65deg, #2F0D0B 20%, #3D1A16 45% 78%, #532C27 85%, #836257 93%);
+    background-position: -20px 0px;
+    background-size: 80px 60px;
+    background-repeat: no-repeat; 
+}
+
+.calculator .face .keyboard .grid-container .function#M-:hover:active{
+    background-image: linear-gradient(65deg, #2F0D0B 20%, #3D1A16 45% 78%, #532C27 85%, #745449 93%);
+    background-position: -18px 0px;
+    background-size: 80px 60px;
     background-repeat: no-repeat; 
 }
