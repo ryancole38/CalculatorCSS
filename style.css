@@ -287,3 +287,41 @@
         0 0 0 1px #50332D,
         0 0 0.5px 4.5px #230801;
 }
+
+.calculator .face .keyboard .grid-container .function#AC{
+    background-image: radial-gradient(#C70B00 60%, #EA6459 90%);
+    background-size: 120px 90px;
+    background-position: -60px 0px;
+    background-repeat: no-repeat; 
+}
+
+.calculator .face .keyboard .grid-container .function#AC:hover:active{
+    background-image: radial-gradient(#C70B00 55%, #EA6459 85%);
+    background-size: 120px 90px;
+    background-position: -60px -10px;
+    background-repeat: no-repeat; 
+}
+
+.calculator .face .keyboard .grid-container .function#MR{
+    background-image: radial-gradient(#300A09 45%, #85685d 70%);
+    background-size: 140px 65px;
+    background-position: -60px -6px;
+    background-repeat: no-repeat; 
+}
+
+.calculator .face .keyboard .grid-container .function#MR:hover:active{
+    background-image: radial-gradient(#300A09 40%, #85685d 75%);
+    background-size: 140px 65px;
+    background-position: -55px -8px;
+    background-repeat: no-repeat; 
+}
+
+.calculator .face .keyboard .grid-container .function#C{
+    background-image: linear-gradient(90deg, #2F0D0B 20%, #3D1A16 45% 78%, #532C27 85%, #8A6A5F 99%);
+    background-repeat: no-repeat; 
+}
+
+.calculator .face .keyboard .grid-container .function#C:hover:active{
+    background-image: linear-gradient(90deg, #2F0D0B 20%, #3D1A16 45% 83%, #532C27 90%, #7c5c52 99%);
+    background-repeat: no-repeat; 
+}
