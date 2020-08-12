@@ -211,6 +211,21 @@ class Calculator{
         }
     }
 
+    percent(){
+        if(!this.inputEmpty()){
+            if(this.operator === '*' || this.operator === "/"){
+                this.inputRegister = this.inputRegister / 100;
+            } else if(this.operator === '-' || this.operator === '+'){
+                this.inputRegister = this.registerA * this.inputRegister / 100;
+            } else{
+                this.inputRegister = '0';
+            }
+        } else{
+            this.inputRegister = '0';
+        }
+        this.screen.display(this.inputRegister);
+    }
+
     transferInputRegistertoRegisterA(){
         this.registerA = this.inputRegister;
         this.inputRegister = "0";
@@ -295,5 +310,8 @@ function registerFunctionEvents(calculator){
     keyboard = document.querySelector('.grid-container');
     keyboard.querySelector('#square-root').addEventListener("mousedown", function(){
         calculator.squareRoot();
+    });
+    keyboard.querySelector('#percent').addEventListener("mousedown", function(){
+        calculator.percent();
     });
 }
