@@ -289,6 +289,9 @@ document.addEventListener("DOMContentLoaded", function(){
     registerMemoryEvents(calculator);
     registerOperatorEvents(calculator);
     registerFunctionEvents(calculator);
+
+    html = document.getElementsByTagName('html')[0];
+    html.style.fontSize = '1px';
 });
 
 function registerNumberEvents(calculator){
