@@ -7,6 +7,7 @@ class Display{
     }
 
     setNumber(character){
+        character = (character === '')? '0' : character;
         this.numberClasses.remove('one');
         if(character.toString() === "0"){
             character = "O";
@@ -49,6 +50,7 @@ class Screen{
     }
 
     display(number){
+        number = (number === '')? '0' : number;
         this.clearDisplay();
         let numberString = number.toString();
         numberString = (numberString.toString().length > this.displayCount)? numberString.substring(0, this.displayCount + 1) : numberString;
@@ -130,17 +132,40 @@ class Calculator{
     }
 
     clearOperationsRegisters(){
-        this.registerA = '0';
-        this.registerB = '0';
+        this.registerA = '';
+        this.registerB = '';
+    }
+
+    recallMemory(){
+        this.inputRegister = this.memoryRegister;
+        this.screen.display(this.inputRegister);
+    }
+
+    incrementMemory(){
+        if(this.inputRegister !== ''){
+            this.memoryRegister += this.inputRegister;
+        } else{
+            this.memoryRegister += (this.registerA === '') ? 0 : this.registerA;
+        }
+    }
+
+    decrementMemory(){
+        if(this.inputRegister !== ''){
+            this.memoryRegister -= this.inputRegister;
+        } else{
+            this.memoryRegister -= (this.registerA === '') ? 0 : this.registerA;
+        }
     }
 
     setOperator(operator){
+        this.inputRegister = (this.inputRegister === '')? '0' : this.inputRegister;
+
         if(this.registerA === ''){
             this.registerA = this.inputRegister;
-            this.inputRegister = '0';
+            this.inputRegister = '';
         } else if(this.registerB === ''){
             this.registerB = this.inputRegister;
-            this.inputRegister = '0';
+            this.inputRegister = '';
         } else{
             this.registerB = '';
         }
@@ -160,12 +185,10 @@ class Calculator{
 
         if(this.registerA === ''){
             this.registerA = this.inputRegister;
-            this.inputRegister = '0';
         } else if(this.registerB === ''){
             this.registerB = this.inputRegister;
-            this.inputRegister = '0';
         }
-        this.inputRegister = '0';
+        this.inputRegister = '';
 
         this.calculateResult();
         this.lastOperator = this.operator;
@@ -173,6 +196,9 @@ class Calculator{
     }
 
     calculateResult(){
+        this.registerA = (this.registerA === '') ? 0 : this.registerA;
+        this.registerB = (this.registerB === '') ? 0 : this.registerB;
+
         let A = Number(this.registerA);
         let B = Number(this.registerB);
         let result = 'Err'
@@ -218,17 +244,17 @@ class Calculator{
             } else if(this.operator === '-' || this.operator === '+'){
                 this.inputRegister = this.registerA * this.inputRegister / 100;
             } else{
-                this.inputRegister = '0';
+                this.inputRegister = '';
             }
         } else{
-            this.inputRegister = '0';
+            this.inputRegister = '';
         }
         this.screen.display(this.inputRegister);
     }
 
     transferInputRegistertoRegisterA(){
         this.registerA = this.inputRegister;
-        this.inputRegister = "0";
+        this.inputRegister = "";
     }
 
     transferResultToInputRegister(){
@@ -236,14 +262,14 @@ class Calculator{
     }
 
     clearInput(){
-        this.inputRegister = "0";
+        this.inputRegister = "";
         this.operator = "";
         this.lastOperator = "";
         this.screen.display(this.inputRegister);
     }
 
     clearAll(){
-        this.inputRegister = "0";
+        this.inputRegister = "";
         this.registerA = "";
         this.registerB = ""
         this.memoryRegister = "";
@@ -284,6 +310,16 @@ function registerMemoryEvents(calculator){
     });
     keyboard.querySelector('#AC').addEventListener("mousedown", function(){
         calculator.clearAll();
+    });
+
+    keyboard.querySelector('#MR').addEventListener("mousedown", function(){
+        calculator.recallMemory()
+    });
+    keyboard.querySelector('#M-minus').addEventListener("mousedown", function(){
+        calculator.decrementMemory();
+    });
+    keyboard.querySelector('#M-plus').addEventListener("mousedown", function(){
+        calculator.incrementMemory();
     });
 }
 
