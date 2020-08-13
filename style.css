@@ -17,7 +17,9 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    top: 100rem;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     background: #F0DEC6;
     border-radius: 20rem;
     box-shadow: -0.25rem -3rem 0 1rem #D7C097, -0.5rem -8rem 0 2rem #CDAC7F, 10rem 10rem 30rem 0 #978E89; 

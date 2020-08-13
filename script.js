@@ -281,6 +281,21 @@ class Calculator{
 
 }
 
+function adjustCalculatorScale(){
+    let calculatorHeight = 755;
+
+    let verticalMarginTotalPercentage = 0.2;
+    let scaleFactor = 1;
+    scaleFactor =  screen.height * (1 - verticalMarginTotalPercentage) / calculatorHeight;
+
+    if(scaleFactor < 1){ // devices don't like rem < 1
+        scaleFactor = 2;
+    }
+    
+    html = document.getElementsByTagName('html')[0];
+    html.style.fontSize = scaleFactor + 'px';
+}
+
 document.addEventListener("DOMContentLoaded", function(){
     let screen = new Screen(10);
     let calculator = new Calculator(screen);
@@ -289,9 +304,9 @@ document.addEventListener("DOMContentLoaded", function(){
     registerMemoryEvents(calculator);
     registerOperatorEvents(calculator);
     registerFunctionEvents(calculator);
+    registerWindowEvents();
 
-    html = document.getElementsByTagName('html')[0];
-    html.style.fontSize = '1px';
+    adjustCalculatorScale();
 });
 
 function registerNumberEvents(calculator){
@@ -352,5 +367,11 @@ function registerFunctionEvents(calculator){
     });
     keyboard.querySelector('#percent').addEventListener("mousedown", function(){
         calculator.percent();
+    });
+}
+
+function registerWindowEvents(){
+    window.addEventListener("orientationchange", function(event){
+        adjustCalculatorScale();
     });
 }
